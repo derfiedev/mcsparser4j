@@ -34,6 +34,14 @@ public class ScannerThreadManager {
         logger.info("Started " + threads.size() + " scanner threads!");
     }
 
+    public void closeAllThreads() {
+        logger.info("Closing all scanner threads...");
+        for (ScannerThread thread : threads) {
+            thread.stopThread();
+        }
+        logger.info("Closed all scanner threads!");
+    }
+
     public List<ScannerThread> getThreads() {
         return threads;
     }

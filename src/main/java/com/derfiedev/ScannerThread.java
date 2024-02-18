@@ -15,11 +15,17 @@ public class ScannerThread extends Thread {
     public ScannerThread(List<Integer> ports) {
         this.ports = ports;
     }
+    private volatile boolean running = true;
+
+    public void stopThread() {
+        running = false;
+    }
+
 
     @Override
     public void run() {
         // logger.info("Starting scanner thread...");
-        while (true) { // Loop and generate random IP addresses
+        while (running) { // Loop and generate random IP addresses
             String ipAddress = IPAddressGenerator.generateRandomIPAddress();
             PortScanner portScanner = new PortScanner(ipAddress, ports);
             List<Integer> openPorts = portScanner.scanPorts();
@@ -43,7 +49,8 @@ public class ScannerThread extends Thread {
                         mineStat.getProtocol(),
                         LocalDateTime.now(),
                         LocalDateTime.now());
-                Main.foundServers.add(serverEntry); // ...then add it to the list of found servers
+                // Main.foundServers.add(serverEntry); // ...then add it to the list of found servers
+                Main.addServerEntry(serverEntry); // ...and add it to the GUI
             }
         }
     }
