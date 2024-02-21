@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public record ServerEntry(
     String host,
     int port,
-    int timeout,
+    long timeout,
     String favicon,
     String motd,
     String version,

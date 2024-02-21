@@ -40,7 +40,7 @@ public class ScannerThread extends Thread {
                 ServerEntry serverEntry = new ServerEntry( // Create a record of a server with all of its details...
                         ipAddress,
                         port,
-                        portScanner.getTimeout(),
+                        mineStat.getLatency(),
                         mineStat.getFavicon(),
                         mineStat.getStrippedMotd(),
                         mineStat.getVersion(),

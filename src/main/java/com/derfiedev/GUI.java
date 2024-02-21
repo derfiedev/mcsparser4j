@@ -16,10 +16,11 @@ public class GUI {
     private JButton startButton;
     private JButton stopButton;
     private JButton copyIPButton;
+    private JButton saveToFileButton;
 
     public GUI() {
         // Create a new JFrame
-        JFrame frame = new JFrame("My Frame");
+        JFrame frame = new JFrame("MCSParser v" + Main.VERSION);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 400);
 
@@ -45,11 +46,16 @@ public class GUI {
                 clipboard.setContents(stringSelection, null);
             }
         });
+        saveToFileButton = new JButton("Save to file");
+        saveToFileButton.addActionListener(e -> {
+            ListSaverToFile.saveListToFile("servers.txt", Main.foundServers);
+        });
 
         buttonPanel.add(serverDiscoveryLabel);
         buttonPanel.add(startButton);
         buttonPanel.add(stopButton);
         buttonPanel.add(copyIPButton);
+        buttonPanel.add(saveToFileButton);
 
         // Create a new JTable with the specified columns
         String[] columns = { "host", "port", "timeout", "motd", "version", "players_online", "players_max",
