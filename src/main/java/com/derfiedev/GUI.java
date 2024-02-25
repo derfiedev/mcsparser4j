@@ -34,6 +34,9 @@ public class GUI {
         JPanel buttonPanel = new JPanel();
         JLabel serverDiscoveryLabel = new JLabel("Server discovery");
         JTable table = new JTable(); // нахуй тебе это тут?
+        //а я ебу чтоли? впервые на джаве пишу тем более с гуи
+
+
         startButton = new JButton("Start");
         startButton.addActionListener(e -> startScannerThreads());
         stopButton = new JButton("Stop");
@@ -74,7 +77,8 @@ public class GUI {
                 copyIPButton(ip);
             }
             catch (Exception ex){
-                System.out.println("No row selected");
+                //System.out.println("No row selected"); 
+                logger.error("No row selected");// логать нужно а не принтить
             }
         }
         );
