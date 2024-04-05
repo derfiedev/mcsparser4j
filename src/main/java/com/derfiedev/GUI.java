@@ -12,11 +12,6 @@ import java.awt.datatransfer.StringSelection;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< Updated upstream
-=======
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
->>>>>>> Stashed changes
 
 public class GUI {
     private static final Logger logger = LogManager.getLogger(Main.class);
@@ -47,25 +42,8 @@ public class GUI {
         stopButton = new JButton("Stop");
         stopButton.addActionListener(e -> stopScannerThreads());
         stopButton.setEnabled(false);
-<<<<<<< Updated upstream
         final JTable finalTable = table; // https://avatars.dzeninfra.ru/get-zen_doc/9827869/pub_64b7a797e2f6aa6832016e60_64b7a7a30d50c9486b0e8ef1/smart_crop_516x290
         copyIPButton = new JButton("Copy IP:Port"); 
-=======
-        final JTable finalTable = table;
-        copyIPButton = new JButton("Copy IP:Port");
-        copyIPButton.addActionListener(e -> {
-            int selectedRow = finalTable.getSelectedRow();
-            if (selectedRow >= 0) {
-                String ip = (String) model.getValueAt(selectedRow, 0);
-                String port = (String) model.getValueAt(selectedRow, 1);
-                String ipPort = ip + ":" + port;
-                StringSelection stringSelection = new StringSelection(ipPort);
-                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                clipboard.setContents(stringSelection, null);
-                
-            }
-        });
->>>>>>> Stashed changes
         saveToFileButton = new JButton("Save to file");
         saveToFileButton.addActionListener(e -> {
             ListSaverToFile.saveListToFile("servers.txt", Main.foundServers);
